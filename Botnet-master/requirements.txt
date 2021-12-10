@@ -3,7 +3,7 @@ certifi
 chardet
 click
 EasyProcess
-Flask
+Flask==1.1.2
 Flask-Script
 Flask-SQLAlchemy
 future
