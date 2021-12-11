@@ -1,0 +1,185 @@
+b'output=[*] Uploading F:\current_semester\software_security\shell\1.png...'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  21:08    <DIR>          .
+2021/12/11  21:08    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  21:07           157,366 1.png
+2021/12/11  21:08             3,024 app.py
+2021/12/11  21:07             6,096 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:09                91 output.txt
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  21:04    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  21:09                 3 test.txt
+2021/12/11  19:47           281,793 tmpnirqqkor.png
+2021/12/11  21:09    <DIR>          __pycache__
+               9 个文件        448,485 字节
+               6 个目录 784,912,760,832 可用字节
+'b'output=$ screenshot'b'output=[*] Uploading C:\Users\lzl\AppData\Local\Temp\tmp6ikrcs6e.png...'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  21:09    <DIR>          .
+2021/12/11  21:09    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  21:07           157,366 1.png
+2021/12/11  21:08             3,024 app.py
+2021/12/11  21:07             6,096 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:12             1,139 output.txt
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  21:11    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  21:11                 3 test.txt
+2021/12/11  21:09            94,189 tmp6ikrcs6e.png
+2021/12/11  19:47           281,793 tmpnirqqkor.png
+2021/12/11  21:09    <DIR>          __pycache__
+              10 个文件        543,722 字节
+               6 个目录 784,912,666,624 可用字节
+'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  21:09    <DIR>          .
+2021/12/11  21:09    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  21:07           157,366 1.png
+2021/12/11  21:08             3,024 app.py
+2021/12/11  21:07             6,096 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:12             2,145 output.txt
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  21:12    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  21:12                 3 test.txt
+2021/12/11  21:09            94,189 tmp6ikrcs6e.png
+2021/12/11  19:47           281,793 tmpnirqqkor.png
+2021/12/11  21:09    <DIR>          __pycache__
+              10 个文件        544,728 字节
+               6 个目录 784,912,596,992 可用字节
+'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  21:09    <DIR>          .
+2021/12/11  21:09    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  21:07           157,366 1.png
+2021/12/11  21:08             3,024 app.py
+2021/12/11  21:07             6,096 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:19             3,151 output.txt
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  21:18    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  21:19                 3 test.txt
+2021/12/11  21:09            94,189 tmp6ikrcs6e.png
+2021/12/11  19:47           281,793 tmpnirqqkor.png
+2021/12/11  21:09    <DIR>          __pycache__
+              10 个文件        545,734 字节
+               6 个目录 784,912,666,624 可用字节
+'b'output=$ screenshot'b'output=[*] Uploading C:\Users\lzl\AppData\Local\Temp\tmpfq7hxk6e.png...'b'output=$ upload F:\current_semester\software_security\shell\1.png'b'output=[*] Uploading F:\current_semester\software_security\shell\1.png...'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  21:26    <DIR>          .
+2021/12/11  21:26    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  21:26           157,366 1.png
+2021/12/11  21:08             3,024 app.py
+2021/12/11  21:26             6,096 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:27             4,397 output.txt
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  21:25    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  21:27                 3 test.txt
+2021/12/11  21:09            94,189 tmp6ikrcs6e.png
+2021/12/11  21:19            97,456 tmpfq7hxk6e.png
+2021/12/11  19:47           281,793 tmpnirqqkor.png
+2021/12/11  21:09    <DIR>          __pycache__
+              11 个文件        644,436 字节
+               6 个目录 784,912,494,592 可用字节
+'b'output=$ camshot'b'output=$ screenshot'b'output=[*] Uploading C:\Users\lzl\AppData\Local\Temp\tmp805arwy_.png...'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  22:17    <DIR>          .
+2021/12/11  22:17    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  22:16             3,591 app.py
+2021/12/11  21:49    <DIR>          buffers
+2021/12/11  22:17             6,160 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:37    <DIR>          download
+2021/12/11  21:37    <DIR>          screenshots
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  22:12    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  22:17                 3 test.txt
+2021/12/11  21:37    <DIR>          upload
+2021/12/11  22:17    <DIR>          __pycache__
+               6 个文件          9,866 字节
+              10 个目录 784,910,942,208 可用字节
+'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  22:17    <DIR>          .
+2021/12/11  22:17    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  22:16             3,591 app.py
+2021/12/11  21:49    <DIR>          buffers
+2021/12/11  22:17             6,160 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:37    <DIR>          download
+2021/12/11  21:37    <DIR>          screenshots
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  22:12    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  22:17                 3 test.txt
+2021/12/11  21:37    <DIR>          upload
+2021/12/11  22:17    <DIR>          __pycache__
+               6 个文件          9,866 字节
+              10 个目录 784,910,942,208 可用字节
+'b'output=$ dir'b'output= 驱动器 F 中的卷是 新加卷
+ 卷的序列号是 76E6-B01E
+
+ F:\current_semester\software_security\shell\remote-shell\G11RC 的目录
+
+2021/12/11  22:17    <DIR>          .
+2021/12/11  22:17    <DIR>          ..
+2021/12/11  08:50    <DIR>          .idea
+2021/12/11  22:16             3,591 app.py
+2021/12/11  21:49    <DIR>          buffers
+2021/12/11  22:17             6,160 client.py
+2021/12/10  23:45                34 config.py
+2021/12/11  21:37    <DIR>          download
+2021/12/11  21:37    <DIR>          screenshots
+2021/12/10  22:32                 0 server.py
+2021/12/11  19:33    <DIR>          static
+2021/12/11  22:12    <DIR>          templates
+2021/12/11  12:07                78 test.py
+2021/12/11  22:17                 3 test.txt
+2021/12/11  21:37    <DIR>          upload
+2021/12/11  22:17    <DIR>          __pycache__
+               6 个文件          9,866 字节
+              10 个目录 784,910,942,208 可用字节
+'$ dir$ dir$ dir$ dir$ dir$ dir$ dir
