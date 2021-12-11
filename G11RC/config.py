@@ -1,1 +1,1 @@
-SERVER = "http://localhost:5000"
+buf = 'F:\\current_semester\\software_security\\shell\\remote-shell\G11RC\\download\\'

@@ -1,0 +1,11 @@
+$ dir
+$ cd
+$ dir test
+$ cd
+$ dir download
+$ dir
+$ cd
+$ dir buffers
+$ dir
+$ cd
+$ dir buffers

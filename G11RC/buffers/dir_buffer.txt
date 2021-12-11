@@ -1,0 +1,1 @@
+{'path': ' F:\\current_semester\\software_security\\shell\\remote-shell\\G11RC\\test µÄÄ¿Â¼\r', 'files': []}
